@@ -1,0 +1,112 @@
+a{
+	color:#ef455f;
+	font-family: Microsoft JhengHei, serif;
+}
+p{
+	color:#28e510;
+	font-family: Microsoft JhengHei, serif;
+}
+h1{
+	color:red;
+	text-align:center;
+	font-family: Microsoft JhengHei, serif;
+}
+h2{
+	color:white;
+	font-family: Microsoft JhengHei, serif;
+}
+li{
+	color:#fff42d;
+	font-family: Microsoft JhengHei, serif;
+}
+ol{
+	color:#fff42d;
+	font-family: Microsoft JhengHei, serif;
+}
+ul{
+	color:#fff42d;
+	font-family: Microsoft JhengHei, serif;
+}
+body{
+	background-image: url('https://images.unsplash.com/photo-1460602594182-8568137446ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6a89cf0d31c8ed23b35aaf9a119a9f5&w=1000&q=80');
+	background-size:cover;
+	margin: 30px;
+	/*padding: 0px 10px 0px 10px;*/
+	background-attachment:fixed;
+}
+.screen-container{
+    margin: 30px;
+    padding: 30px 50px 30px 50px;
+}
+
+.slideshow-container{
+  width: 60%;  
+  height: 100px;
+  margin: 0px auto;  /* 置中 */
+}
+.slideshowul{
+	width: 80%;
+	list-style-type: none;  /* 不要顯示點點 */
+	display: inline-block;  /* 變成inline才不會占用一整行 */
+	margin: 0px;  /* 取消預設margin */
+	text-align: center;  /* 置中內部元素 */
+	margin-top: 45px;
+	padding: 0px;  /* 取消預設padding(ul預設有padding-left: 40px) */
+}
+.spot{
+	width: 13px;
+	height: 13px;
+	margin-top: 45px;
+	border-radius: 100%;  /* 變成圓形 */
+	background-color: gray;
+	display: inline-block;  
+	cursor: pointer; /*cursor change to hand shape*/
+}
+.spot:hover{  /* pseudo elements */
+  background-color: black;
+}
+
+.spot.prev{
+  float: left;  /* 置左 */
+}
+
+.spot.next{
+  float: right;  /* 置右 */
+}
+@media(max-width: 800px){
+  .screen-container{
+    margin: 20px 15px 20px 15px;
+  }
+  .slideshow-container{
+    width: 90%; 
+  }
+  p{
+    font-size: 18px;
+  }
+}
+
+.icon-bar {
+    width: 50px; 
+    background-color: #555;
+    right: 0;
+    position: fixed;
+}
+
+.icon-bar a {
+    display: inline-block; 
+    text-align: center;
+    padding: 10px; 
+    transition: all 0.3s ease; 
+    color: white; 
+    font-size: 36px;
+    cursor: pointer;
+    margin-right: 0px; 
+}
+
+.icon-bar a:hover {
+    background-color: #000; 
+}
+
+.active {
+    background-color: #4CAF50;
+}
