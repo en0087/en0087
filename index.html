@@ -1,10 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>你好，GitHub</title>
-  </head>
-  <body>
-    <h1>覺得厲害</h1>
-  </body>
+<head>
+	<title>En's page</title>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style><!-- 
+	SPAN.searchword { background-color:yellow; }
+	// -->
+	</style>
+	<script src="searchhi.js" type="text/javascript" language="JavaScript"></script>
+	<script language="JavaScript"><!--
+	function loadSearchHighlight()
+	{
+	  SmartHighlight();
+	  document.searchhi.h.value = searchhi_string;
+	  if( location.hash.length > 1 ) location.hash = location.hash;
+	}
+	// -->
+	</script>
+
+	<script>
+		$(document).ready(function(){
+			$("[name='searchhi']").hide();
+		});
+	</script>
+
+	<script>
+		$(document).ready(function(){
+			$(".quotes").hide();  //隱藏所有quote
+			$(".quotes:nth-child(1)").fadeIn("slow");  //秀出第一個quote, n-th-child(1)是一個persudo-element
+			let current = 1;   //設定當前quote的位置
+			let max = $(".slideshowul li").length;  //.slideshowul底下有幾個li
+			
+			startChange();  //開始自動撥放
+
+			//往前一個quote
+			function prev(){  
+				$(".quotes").hide();  //先將所有quote隱藏
+				current -= 1;  //當前位置-1
+
+				if(current == 0){  //防止超出範圍的狀況，如果-1後等於零就讓它變max
+					current = max;
+				}
+				$(".quotes:nth-child(" + current + ")").fadeIn("slow");  //根據當前位置秀出quote
+			}
+
+			//往後一個quote
+			function next(){    
+				$(".quotes").hide();
+				current += 1;  //當前位置-1
+
+				if(current > max){  //防止超出範圍的狀況，如果大於max則返回1
+					current = 1;
+				}
+				$(".quotes:nth-child(" + current + ")").fadeIn("slow");
+			}
+
+			function startChange(){
+				changeIt = setInterval(function(){next();}, 4000);  //每4000ms執行一次next()
+			}
+
+			function stopChange(){
+				clearInterval(changeIt);  //清除interval
+			}
+			
+			//按下prev時執行
+			$(".spot.prev").click(function(){
+				stopChange();  //先停止自動撥放
+				prev();  //換到前一個quote
+				startChange();  //再開始自動撥放
+			});
+			
+			//按下next時執行
+			$(".spot.next").click(function(){
+				stopChange();
+				next();
+				startChange();
+			});
+		});
+	</script>
+</head>
+<body onLoad="JavaScript:loadSearchHighlight();" onUnload="JavaScript:SmartHLUnload();">
+	<form method="get" name="searchhi" onSubmit="JavaScript:NotRefreshHL();">
+	<input type="text" name="h" />
+	<input type="submit" value="Go!" />
+	</form>
+	<div class="screen-container" style="background-color:rgb(132, 114, 116,0.5);width:80%;">
+		<div class="icon-bar">
+			<a class="active" href="file:///C:/Users/USER/Desktop/EN/HTML/first.html?h=#"><i class="fa fa-home"></i></a> 
+			<a onclick=$("[name='searchhi']").show()<i class="fa fa-search"></i></a> 
+			<a href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><i class="fa fa-envelope"></i></a> 
+			<a href="https://www.google.com.tw/" target="_blank"><i class="fa fa-globe"></i></a>
+			<a href="file:///C:/Users/USER/Desktop/EN/HTML/first.html?h=#"><i class="fa fa-trash"></i></a>
+		</div>
+		<h1>En's File</h1>
+		<div class="slideshow-container">
+			<div class="spot prev"></div>
+			<ul class="slideshowul">
+				<li class="quotes">li1</li>
+				<li class="quotes">li2</li>
+				<li class="quotes">li3</li>
+				<li class="quotes">li4</li>
+			</ul>
+			<div class="spot next"></div>
+		</div>
+		<h2>My Photo</h2>
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxJweMAIuMJCO680Dr2Bxc9S2ut3dcnK4B55Y_aokqfMNc4Mgbxw">
+		<h2>Who am I?</h2>
+		<p>輔大圖資三 謝恩翰</p>
+		<h2>My Strengths</h2>
+		<ol>
+			<li>打鼓</li>
+			<li>唱歌</li>
+			<li>排球</li>
+		</ol>
+		<h2>My hobbies</h2>
+		<ul>
+			<li>打鼓</li>
+			<li>唱歌</li>
+			<li>排球</li>
+		</ul>
+		<h2>FJULIS homepage</h2>
+		<a href="http://web.lins.fju.edu.tw/chi/" target="_blank">輔大圖資系網</a>
+	</div>
+</body>
 </html>
